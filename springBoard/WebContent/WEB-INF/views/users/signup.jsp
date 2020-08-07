@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>/user/signup.jsp</title>
+</head>
+<body>
+<table>
+<thead>
+  <tr>
+    <th>id</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>pw</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pw check</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>phone</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>postNo</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>address</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>company</td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+</body>
+</html>
