@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/common.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>list</title>
 </head>
 <script type="text/javascript">
 
 	$j(document).ready(function(){
 	});
-	/* √º≈© ¿¸√º º±≈√, «ÿ¡¶ */
+	/* Ï≤¥ÌÅ¨ Ï†ÑÏ≤¥ ÏÑ†ÌÉù, Ìï¥Ï†ú */
 	$j(document).ready(function(){
 		$j("#allCheck").click(function(){
 			if($j("#allCheck").prop("checked")){
@@ -23,16 +23,17 @@
 			}
 		});
 		
-		var codeNameLength = ${fn:length(codeName)};
+		var codeNameLength = "${fn:length(codeName)}";
 			
-/* «—∞≥ √º≈©π⁄Ω∫ «ÿ¡¶ Ω√ ¿¸√º √º≈©π⁄Ω∫ «ÿ¡¶ */
+/* ÌïúÍ∞ú Ï≤¥ÌÅ¨Î∞ïÏä§ Ìï¥Ï†ú Ïãú Ï†ÑÏ≤¥ Ï≤¥ÌÅ¨Î∞ïÏä§ Ìï¥Ï†ú */
 		$j(".typeCk").click(function(){
 			if($j("input[name='codeId']:checked").length == codeNameLength){
-				$j("#checkAll").prop("checked", true);
+				$j("#allCheck").prop("checked", true);
 			}else{
-				$j("#checkAll").prop("checked", false);
+				$j("#allCheck").prop("checked", false);
 			}
 		});	
+		
 		
 		
 		$j("#btnSearch").click(function(){
@@ -48,8 +49,17 @@
 <table  align="center">
 	<tr>
 		<td align="left">
-			<a  href ="${pageContext.request.contextPath }/board/users/loginform.do">login</a> 
-			<a href ="${pageContext.request.contextPath }/board/users/signup_form.do">join</a>
+		<c:choose>
+		<c:when test="${not empty sessionScope.id }">
+		<label>${id}Îãò Î°úÍ∑∏Ïù∏Ï§ë</label>
+		<a href ="/users/logout.do">Î°úÍ∑∏ÏïÑÏõÉ</a>
+		</c:when>
+		<c:otherwise>
+		<a  href ="/users/loginform.do">login</a> 
+			<a href ="/users/signup_form.do">join</a>
+		</c:otherwise>
+		</c:choose>
+			
 		</td>
 	</tr>
 	<tr>
@@ -70,11 +80,11 @@
 					<td width="300" align="center">
 						Title
 					</td>
-				</tr>
+				</tr> 
 				<c:forEach items="${boardList}" var="list">
 					<tr>
 						<td align="center">
-							${list.boardType}
+							${list.codeName }							
 						</td>
 						<td>
 							${list.boardNum}
@@ -89,21 +99,67 @@
 	</tr>
 	<tr>
 		<td align="right">
-			<a href ="/board/boardWrite.do">±€æ≤±‚</a>
+			<a href ="/board/boardWrite.do">Í∏ÄÏì∞Í∏∞</a>
 		</td>
 	</tr>
 	<tr>
 	<td align="left">
 				<form id="selectType" class="selectType" method="get" action="/board/boardList.do">
-				<input type="checkbox" id="allCheck" value="all">¿¸√º
+				<input type="checkbox" id="allCheck" value="all">Ï†ÑÏ≤¥
 	<c:forEach var="code" items="${codeName}" varStatus="status">
 		<input type="checkbox" class="typeCk" name="codeId" value="${code.codeId}">${code.codeName}</>
 	</c:forEach>
-				<button type="button" id="btnSearch">¡∂»∏</button>
+				<button type="button" id="btnSearch">Ï°∞Ìöå</button>
 </form>
 
 	</tr>
 </table>	
-
+<%-- <div class="page-display">
+		<ul class="pagination">
+		<c:choose>
+			<c:when test="${board.startPageNum ne 1 }">
+				<li>
+					<a href="list.do?pageNum=${board.startPageNum-1 }">
+						&laquo;
+					</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled">
+					<a href="javascript:">&laquo;</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+		<c:forEach var="i" begin="${board.startPageNum }" 
+			end="${endPageNum }" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum }">
+					<li class="active"><a href="boardlist.do?pageNo=${i }">${i }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="boardlist.do?pageNo=${i }">${i }</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${endPageNum lt totalPageCount }">
+				<li>
+					<a href="boardlist.do?pageNo=${endPageNum+1 }">
+						&raquo;
+					</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled">
+					<a href="javascript:">&raquo;</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+		</ul>		
+	</div>
+	
+	</form>
+</div> --%>
 </body>
 </html>

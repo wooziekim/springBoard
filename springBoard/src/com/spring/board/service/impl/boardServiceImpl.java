@@ -90,5 +90,11 @@ public class boardServiceImpl implements boardService{
 		return boardDao.selectCodeNameList();
 	}
 
+	@Override
+	public List<ComCodeVo> selectPhoneCodeNameList() throws Exception {
+		// TODO Auto-generated method stub
+		return boardDao.selectPhoneCodeNameList();
+	}
+
 	
 }

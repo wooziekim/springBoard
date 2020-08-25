@@ -28,6 +28,7 @@ public interface boardService {
 	
 	public List<ComCodeVo> selectCodeNameList() throws Exception;
 	
+	public List<ComCodeVo> selectPhoneCodeNameList() throws Exception;
 	
 
 }

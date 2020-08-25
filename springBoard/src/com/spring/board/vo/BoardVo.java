@@ -10,6 +10,7 @@ public class BoardVo{
 	private String	modifier;
 	private String codeId;
 	private String codeType;
+	private String codeName;
 	
 	public String getCodeType() {
 		return codeType;
@@ -66,6 +67,12 @@ public class BoardVo{
 	}
 	public void setModifier(String modifier) {
 		this.modifier = modifier;
+	}
+	public String getCodeName() {
+		return codeName;
+	}
+	public void setCodeName(String codeName) {
+		this.codeName = codeName;
 	}
 	
 	

@@ -80,6 +80,11 @@ public class BoardDaoImpl implements BoardDao{
 		return sqlSession.selectList("board.codeNameList");
 		
 	}
+	@Override
+	public List<ComCodeVo> selectPhoneCodeNameList() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.phoneCodeNameList");
+	}
 	
 	
 	

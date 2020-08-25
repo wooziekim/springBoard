@@ -1,6 +1,6 @@
-package com.spring.user.vo;
+package com.spring.users.vo;
 
-public class UserVo {
+public class UsersVo {
 	
 	private String 	id;
 	private String 	pw;
@@ -15,7 +15,10 @@ public class UserVo {
 	private String create_time;
 	private String modifier;
 	private String modified_time;
-	public UserVo(String id, String pw, String name, String phone1, String phone2, String phone3, String addr1,
+	
+	public UsersVo() {}
+	
+	public UsersVo(String id, String pw, String name, String phone1, String phone2, String phone3, String addr1,
 			String addr2, String company, String creator, String create_time, String modifier, String modified_time) {
 		super();
 		this.id = id;

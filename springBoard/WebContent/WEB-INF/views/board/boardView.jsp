@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/common.jsp"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>boardView</title>
 </head>
 <body>
@@ -69,15 +69,15 @@ $j("#delete_form").on("submit",
 					success:function(responseData){
 						if(responseData.cnt > 0){
 							console.log(responseData.result)
-							 alert("»èÁ¦¸¦ ¼º°øÀûÀ¸·Î ¿Ï·áÇß½À´Ï´Ù.")
+							 alert("ì‚­ì œë¥¼ ì„±ê³µì ìœ¼ë¡œ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.")
 						}else{				
-							 alert("ÀÌ¹Ì »èÁ¦µÈ °Ô½Ã¹° ÀÔ´Ï´Ù.")
+							 alert("ì´ë¯¸ ì‚­ì œëœ ê²Œì‹œë¬¼ ì…ë‹ˆë‹¤.")
 				}
 						location.href="/board/boardList.do"
 					}
 					
 		});
-			//Æû Á¦Ãâ ¸·±â
+			//í¼ ì œì¶œ ë§‰ê¸°
 			return false;
 }
 );

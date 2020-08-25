@@ -3,6 +3,8 @@
 <mapper namespace="board">
     
     <resultMap type="com.spring.board.vo.BoardVo" id="boardVo">
+    	<result property="codeId" 	column="CODE_ID"/>
+    	<result property="codeName" 	column="CODE_NAME"/>
     	<result property="boardType" 	column="BOARD_TYPE"/>
     	<result property="boardNum" 	column="BOARD_NUM"/>
     	<result property="boardTitle" 	column="BOARD_TITLE"/>
@@ -17,11 +19,18 @@
     </resultMap>
     
     <select id="codeNameList" parameterType="com.spring.board.vo.ComCodeVo" resultMap="comCodeVo">
-    	SELECT CODE_NAME, CODE_ID
+    	SELECT CODE_NAME
+    		, CODE_ID
     	FROM COM_CODE
     	WHERE CODE_TYPE = 'menu'
     </select>
     
+    <select id="phoneCodeNameList" parameterType="com.spring.board.vo.ComCodeVo" resultMap="comCodeVo">
+    	SELECT CODE_NAME
+    		, CODE_ID
+    	FROM COM_CODE
+    	WHERE CODE_TYPE = 'phone'
+    </select>
     
     
     <select id="boardList" parameterType="com.spring.board.vo.PageVo" resultMap="boardVo">
@@ -45,8 +54,7 @@
 		FROM
 			BOARD, COM_CODE
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
-			BOARD.MODIFIER != 'DELETE'
-			AND
+			
 			CODE_ID = BOARD_TYPE
 			
 			<if test="codeId != null">
@@ -58,6 +66,7 @@
 		</trim>
 		)
 	WHERE NUMROW BETWEEN (#{pageNo}-1)*10 + 1 AND (#{pageNo})*10
+	
     </select>
     
     <select id="boardTotal" parameterType="Integer" resultType="Integer">
@@ -92,12 +101,10 @@
         ,MODIFIED_TIME
         )
         VALUES
-        (#{boardType, jdbcType=VARCHAR}
+        (#{boardType}
         ,(SELECT TO_NUMBER(NVL(MAX(BOARD_NUM),0)+1)
-        	WHERE BOARD_TYPE = 'a01'
-	    FROM
-	     BOARD
-	   )
+	    FROM BOARD
+	    WHERE BOARD_TYPE = #{boardType})
         ,#{boardTitle}
         ,#{boardComment}
         ,'SYSTEM'

@@ -28,4 +28,6 @@ public interface BoardDao {
 	
 	public List<ComCodeVo> selectCodeNameList() throws Exception;
  
+	public List<ComCodeVo> selectPhoneCodeNameList() throws Exception;
+	
 }
