@@ -45,6 +45,7 @@ public class boardServiceImpl implements boardService{
 		boardVo.setBoardType(boardType);
 		boardVo.setBoardNum(boardNum);
 		
+		
 		return boardDao.selectBoard(boardVo);
 	}
 	
@@ -95,6 +96,8 @@ public class boardServiceImpl implements boardService{
 		// TODO Auto-generated method stub
 		return boardDao.selectPhoneCodeNameList();
 	}
+
+	
 
 	
 }

@@ -10,6 +10,21 @@
 <body>
 <table align="center">
 	<tr>
+		<td align="left">
+		<c:choose>
+		<c:when test="${not empty sessionScope.id }">
+		<label>${id}님 로그인중</label>
+		<a href ="/users/logout.do">로그아웃</a>
+		</c:when>
+		<c:otherwise>
+		<a  href ="/users/loginform.do">login</a> 
+			<a href ="/users/signup_form.do">join</a>
+		</c:otherwise>
+		</c:choose>
+			
+		</td>
+	</tr>
+	<tr>
 		<td>
 			<table border ="1">
 				<tr>
@@ -33,7 +48,7 @@
 					Writer
 					</td>
 					<td>
-					${creator }
+					${board.creator} 
 					</td>
 				</tr>
 			</table>

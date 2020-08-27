@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,7 @@ import com.spring.board.vo.BoardVo;
 import com.spring.board.vo.ComCodeVo;
 import com.spring.board.vo.PageVo;
 import com.spring.common.CommonUtil;
+import com.spring.users.vo.UsersVo;
 
 @Controller
 public class BoardController {
@@ -40,7 +42,7 @@ public class BoardController {
 		
 		  String[] codeId = request.getParameterValues("codeId"); 
 		  if (codeId != null) {
-		  for(int i=0; i<codeId.length; i++) { 
+		  for(int i=0; i < codeId.length; i++) { 
 		System.out.println("String[] codeId : "
 		  + codeId[i].toString()); } }
 		  
@@ -88,6 +90,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardWrite.do", method = RequestMethod.GET)
 	public String boardWrite(Locale locale, Model model) throws Exception{
+		
 		
 		List<ComCodeVo> codeNameList = new ArrayList<ComCodeVo>();
 		codeNameList = boardService.selectCodeNameList();
@@ -200,9 +203,7 @@ public class BoardController {
 		@RequestMapping(value = "/board/deleteBoard", 
 				method = RequestMethod.POST)
 		@ResponseBody 
-		public HashMap <String, Object> deleteBoard(
-				
-				BoardVo boardVo) throws Exception {
+		public HashMap <String, Object> deleteBoard(BoardVo boardVo) throws Exception {
 			HashMap<String, Object> result = new HashMap <String,Object>();
 		    
 			int count=0;

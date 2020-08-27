@@ -13,7 +13,7 @@
     	<result property="addr2" column="USER_ADDR2"/>
     	<result property="company" column="USER_COMPANY"/>
     	<result property="creator" column="CREATOR"/>
-    	<result property="creator_time" column="CREATOR_TIME"/>
+    	<result property="create_time" column="CREATE_TIME"/>
     	<result property="modifier" column="MODIFIER"/>
     	<result property="modified_time" column="MODIFIED_TIME"/>
     	

@@ -43,6 +43,21 @@
 <form class="boardWrite">
 	<table align="center">
 		<tr>
+		<td align="left">
+		<c:choose>
+		<c:when test="${not empty sessionScope.id }">
+		<label>${id}님 로그인중</label>
+		<a href ="/users/logout.do">로그아웃</a>
+		</c:when>
+		<c:otherwise>
+		<a  href ="/users/loginform.do">login</a> 
+			<a href ="/users/signup_form.do">join</a>
+		</c:otherwise>
+		</c:choose>
+			
+		</td>
+	</tr>
+		<tr>
 			<td align="right">
 			<input id="submit" type="button" value="작성">
 			<input id="submit" type="button" value="행 추가">
@@ -83,10 +98,10 @@
 					</tr>
 					<tr>
 						<td align="center">
-						Writer
+						<label for="creator">Writer</label>
 						</td>
 						<td>
-						${users.creator }
+						<input name="creator" type="text" value="${id }" disabled/>
 						</td>
 					</tr>
 				</table>

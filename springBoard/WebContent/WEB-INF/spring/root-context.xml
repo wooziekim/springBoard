@@ -11,7 +11,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 	        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-	        <property name="url" value="jdbc:oracle:thin:@localhost:1521:system" />
+	        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
 	        <property name="username" value="scott" />
 	        <property name="password" value="tiger" />
 	</bean> 
@@ -40,7 +40,7 @@
 	        <constructor-arg name = "sqlSessionFactory" ref="sqlSessionFactory" />
 	 </bean>
 	
-
+	
 
 
 </beans>
